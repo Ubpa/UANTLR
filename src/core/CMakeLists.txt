@@ -1,6 +1,13 @@
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+  set(coptions -wd4996)
+else()
+  set(coptions "")
+endif()
+
 Ubpa_AddTarget(
   MODE STATIC
-  SOURCE "${PROJECT_SOURCE_DIR}/include" 
+  SOURCE
+    "${PROJECT_SOURCE_DIR}/include" 
   INC
     "include/_deps/antlr4"
   INC_PRIVATE
@@ -11,10 +18,8 @@ Ubpa_AddTarget(
 	"include/_deps/antlr4/tree"
 	"include/_deps/antlr4/tree/pattern"
 	"include/_deps/antlr4/tree/xpath"
-  DEFINE ANTLR4CPP_STATIC
+  DEFINE
+    ANTLR4CPP_STATIC
+  C_OPTION
+    ${coptions}
 )
-
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
-  Ubpa_GetTargetName(targetName ${CMAKE_CURRENT_LIST_DIR})
-  target_compile_options(${targetName} PUBLIC "-wd4996")
-endif()
