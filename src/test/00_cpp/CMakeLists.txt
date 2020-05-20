@@ -7,7 +7,7 @@ if(${Ubpa_Build${PROJECT_NAME}Test})
     ${parserName}
     ${CMAKE_CURRENT_SOURCE_DIR}/CPP14.g4
     BOTH
-    FALSE
+    TRUE
     TRUE
     Ubpa
   )
@@ -17,5 +17,5 @@ Ubpa_AddTarget(
   TEST
   MODE EXE
   SOURCE "${ANTLR4_SRC_FILES_${parserName}}"
-  LIB Ubpa::UANTLR_core
+  LIB Ubpa::UANTLR_runtime
 )
