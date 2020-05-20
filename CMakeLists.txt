@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(UANTLR VERSION 0.0.1)
+project(UANTLR VERSION 0.0.2)
 message(STATUS "[Project] ${PROJECT_NAME}")
 
 include(FetchContent)
@@ -22,6 +22,7 @@ endif()
 Ubpa_InitProject()
 
 # ref: ANTLR4 c++ runtime
+
 if(MSVC)
   set(ANTLR_CXX_WARNING_FLAGS "  /W4")
 else()
@@ -73,34 +74,26 @@ else()
   message(FATAL_ERROR "Your C++ compiler does not support C++11.")
 endif()
 
-if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -wd4996")
+Ubpa_DownloadZip(
+  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_20200520.zip
+  antlr4_20200520.zip
+  SHA256 d7aed9ced7e34dbc3655470f03dccf185d12f3dc44b5ed05019a6acce98c4f98
+)
+
+if(Ubpa_BuildUANTLRTest)
+  include(cmake/UANTLRGenerator.cmake)
 endif()
 
 Ubpa_AddSubDirsRec(src)
+Ubpa_AddSubDirsRec(test)
 
 # install
 Ubpa_PackageName(package_name)
 
-configure_package_config_file(
-  config/antlr4-generator.cmake.in
-  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}GeneratorConfig.cmake"
-  INSTALL_DESTINATION "${package_name}/cmake"
-  NO_SET_AND_CHECK_MACRO
-  NO_CHECK_REQUIRED_COMPONENTS_MACRO )
-
-write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}GeneratorConfigVersion.cmake"
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMinorVersion )
-
 install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}GeneratorConfig.cmake"
-  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}GeneratorConfigVersion.cmake"
   "config/Antlr4Package.md"
   "config/README.md"
-  "config/_deps/antlr-4.8-complete.jar"
   DESTINATION "${package_name}/cmake"
 )
 
-Ubpa_Export(DIRECTORIES "include")
+Ubpa_Export(DIRECTORIES "include;cmake")

@@ -13,3 +13,8 @@ Ubpa_AddTarget(
 	"include/_deps/antlr4/tree/xpath"
   DEFINE ANTLR4CPP_STATIC
 )
+
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+  Ubpa_GetTargetName(targetName ${CMAKE_CURRENT_LIST_DIR})
+  target_compile_options(${targetName} PUBLIC "-wd4996")
+endif()
