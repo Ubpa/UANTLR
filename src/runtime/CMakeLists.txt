@@ -1,7 +1,7 @@
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
-  set(coptions -wd4996)
-else()
-  set(coptions "")
+set(c_options "")
+
+if(MSVC)
+  list(APPEND c_options /wd4996)
 endif()
 
 Ubpa_AddTarget(
@@ -9,17 +9,17 @@ Ubpa_AddTarget(
   SOURCE
     "${PROJECT_SOURCE_DIR}/include" 
   INC
-    "include/_deps/antlr4"
+    "${PROJECT_SOURCE_DIR}/include/_deps/antlr4"
   INC_PRIVATE
-	"include/_deps/antlr4/atn"
-	"include/_deps/antlr4/dfa"
-	"include/_deps/antlr4/misc"
-	"include/_deps/antlr4/support"
-	"include/_deps/antlr4/tree"
-	"include/_deps/antlr4/tree/pattern"
-	"include/_deps/antlr4/tree/xpath"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/atn"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/dfa"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/misc"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/support"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/tree"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/tree/pattern"
+	"${PROJECT_SOURCE_DIR}/include/_deps/antlr4/tree/xpath"
   DEFINE
     ANTLR4CPP_STATIC
   C_OPTION
-    ${coptions}
+    ${c_options}
 )
