@@ -5,6 +5,7 @@ message(STATUS "[Project] ${PROJECT_NAME}")
 
 include(cmake/InitUCMake.cmake)
 Ubpa_InitUCMake()
+include(cmake/UbpaANTLR4Generator.cmake)
 
 Ubpa_InitProject()
 
@@ -14,10 +15,7 @@ Ubpa_DownloadZip(
   SHA256 d7aed9ced7e34dbc3655470f03dccf185d12f3dc44b5ed05019a6acce98c4f98
 )
 
-if(Ubpa_BuildTest_UANTLR)
-  include(cmake/UANTLRGenerator.cmake)
-endif()
-
+Ubpa_AddSubDirsRec(include)
 Ubpa_AddSubDirsRec(src)
 
 # install
