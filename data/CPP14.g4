@@ -583,9 +583,22 @@ enumeratorlist
    | enumeratorlist ',' enumeratordefinition
    ;
 
+/*
+// C++14
 enumeratordefinition
    : enumerator
    | enumerator '=' constantexpression
+   ;
+// C++17
+enumeratordefinition
+   : enumerator attributespecifierseq?
+   | enumerator attributespecifierseq? '=' constantexpression
+   ;
+*/
+
+enumeratordefinition
+   : enumerator attributespecifierseq?
+   | enumerator attributespecifierseq? '=' constantexpression
    ;
 
 enumerator
