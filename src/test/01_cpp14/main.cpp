@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
 
   ANTLRInputStream input(R"(
 namespace A::B {
-  struct [[meta(\"hello world\")]] Cmpt{
+  struct [[meta("hello world")]] Cmpt{
   };
 }
 )");
