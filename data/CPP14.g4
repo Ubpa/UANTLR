@@ -67,6 +67,11 @@ nestednamespecifier
    | nestednamespecifier Template? simpletemplateid '::'
    ;
 
+nestednamespacenamespecifier
+   : namespacename '::'
+   | nestednamespacenamespecifier namespacename '::'
+   ;
+
 lambdaexpression
    : lambdaintroducer lambdadeclarator? compoundstatement
    ;
@@ -625,7 +630,7 @@ namednamespacedefinition
    ;
 
 originalnamespacedefinition
-   : Inline? Namespace Identifier '{' namespacebody '}'
+   : Inline? Namespace nestednamespacenamespecifier? Identifier '{' namespacebody '}'
    ;
 
 extensionnamespacedefinition

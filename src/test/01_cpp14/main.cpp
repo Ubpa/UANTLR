@@ -26,7 +26,12 @@ using namespace antlr4;
 
 int main(int argc, const char * argv[]) {
 
-  ANTLRInputStream input("struct [[meta(\"hello world\")]] Cmpt{};");
+  ANTLRInputStream input(R"(
+namespace A::B {
+  struct [[meta(\"hello world\")]] Cmpt{
+  };
+}
+)");
   CPP14Lexer lexer(&input);
   CommonTokenStream tokens(&lexer);
 
