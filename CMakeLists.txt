@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(UANTLR VERSION 0.1.2)
+project(UANTLR VERSION 0.1.3)
 message(STATUS "[Project] ${PROJECT_NAME}")
 
 include(cmake/InitUCMake.cmake)
@@ -10,9 +10,9 @@ include(cmake/UbpaANTLR4Generator.cmake)
 Ubpa_InitProject()
 
 Ubpa_DownloadZip(
-  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_20200520.zip
-  antlr4_20200520.zip
-  SHA256 d7aed9ced7e34dbc3655470f03dccf185d12f3dc44b5ed05019a6acce98c4f98
+  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_20200910.zip
+  antlr4_20200910.zip
+  SHA256 5DEA841B94C717862B8872DE05F50C981F4CAD7632D8B29826117AADC8E45B6E
 )
 
 Ubpa_AddSubDirsRec(include)
