@@ -106,7 +106,7 @@ function(Ubpa_ANTLR4Generate)
     set(NamespaceOption "")
   endif()
 
-  if(NOT Java_FOUND)
+  if(NOT Java_JAVA_EXECUTABLE)
     message(FATAL_ERROR "Java is required to process grammar or lexer files! - Use 'FIND_PACKAGE(Java COMPONENTS Runtime REQUIRED)'")
   endif()
 
