@@ -9,9 +9,9 @@ Ubpa_InitUCMake()
 Ubpa_InitProject()
 
 Ubpa_DownloadZip(
-  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_20201103.zip
-  antlr4_20201103.zip
-  SHA256 82ee041bff477a0e167fdd0c390f52ee1342c34d613d3e8adf2ecca830505e37
+  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_20201106.zip
+  antlr4_20201106.zip
+  SHA256 B889269D7CC49C0C54B40107ACB9A6FE5171E6307516DA348EBAACD93B54A135
 )
 
 Ubpa_AddSubDirsRec(include)

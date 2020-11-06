@@ -421,7 +421,7 @@ enumerator: Identifier;
 
 namespaceName: Identifier | namespaceAlias;
 
-originalNamespaceName: qualifiednamespacespecifier;
+originalNamespaceName: qualifiedNamespaceSpecifier;
 
 namespaceDefinition:
 	Inline? Namespace (Identifier | originalNamespaceName)? LeftBrace namespaceBody = declarationseq
@@ -430,9 +430,9 @@ namespaceDefinition:
 namespaceAlias: Identifier;
 
 namespaceAliasDefinition:
-	Namespace Identifier Assign qualifiednamespacespecifier Semi;
+	Namespace Identifier Assign qualifiedNamespaceSpecifier Semi;
 
-qualifiednamespacespecifier: nestedNameSpecifier? namespaceName;
+qualifiedNamespaceSpecifier: nestedNameSpecifier? namespaceName;
 
 usingDeclaration:
 	Using ((Typename_? nestedNameSpecifier) | Doublecolon) unqualifiedId Semi;
@@ -451,7 +451,7 @@ linkageSpecification:
 attributeSpecifierSeq: attributeSpecifier+;
 
 attributeSpecifier:
-	LeftBracket LeftBracket attributeList? RightBracket RightBracket
+	LeftBracket LeftBracket (Using attributeNamespace Colon)? attributeList? RightBracket RightBracket
 	| alignmentspecifier;
 
 alignmentspecifier:
@@ -555,11 +555,32 @@ parameterDeclarationClause:
 parameterDeclarationList:
 	parameterDeclaration (Comma parameterDeclaration)*;
 
+nonSimpleTypeDeclSpecifier
+	: storageClassSpecifier
+	| (
+		(
+			elaboratedTypeSpecifier
+			| typeNameSpecifier
+			| cvQualifier
+		)
+		| classSpecifier
+		| enumSpecifier
+	)
+	| functionSpecifier
+	| Friend
+	| Typedef
+	| Constexpr;
+
+preDeclSpecifierSeq
+	: nonSimpleTypeDeclSpecifier+;
+postDeclSpecifierSeq
+	: nonSimpleTypeDeclSpecifier+;
+proDeclSpecifierSeq
+	: preDeclSpecifierSeq? simpleTypeSpecifier postDeclSpecifierSeq? attributeSpecifierSeq?;
+
 parameterDeclaration:
-	attributeSpecifierSeq? declSpecifierSeq (
-		(declarator | abstractDeclarator?) (
-			Assign initializerClause
-		)?
+	attributeSpecifierSeq? proDeclSpecifierSeq (
+		(declarator | abstractDeclarator)? ( Assign initializerClause )?
 	);
 
 functionDefinition:
@@ -608,10 +629,11 @@ classVirtSpecifier: Final;
 classKey: Class | Struct;
 
 memberSpecification:
-	(memberdeclaration | accessSpecifier Colon)+;
+	(memberDeclaration | accessSpecifier Colon)+;
 
-memberdeclaration:
-	attributeSpecifierSeq? declSpecifierSeq? memberDeclaratorList? Semi
+memberDeclaration:
+	attributeSpecifierSeq? proDeclSpecifierSeq? memberDeclaratorList? Semi
+	| declSpecifierSeq? Semi
 	| functionDefinition
 	| usingDeclaration
 	| staticAssertDeclaration
@@ -644,7 +666,10 @@ pureSpecifier:
 baseClause: Colon baseSpecifierList;
 
 baseSpecifierList:
-	baseSpecifier Ellipsis? (Comma baseSpecifier Ellipsis?)*;
+	baseSpecifierX (Comma baseSpecifierX)*;
+
+baseSpecifierX:
+	baseSpecifier Ellipsis?;
 
 baseSpecifier:
 	attributeSpecifierSeq? (
