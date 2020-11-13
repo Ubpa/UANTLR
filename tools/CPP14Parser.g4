@@ -555,6 +555,27 @@ parameterDeclarationClause:
 parameterDeclarationList:
 	parameterDeclaration (Comma parameterDeclaration)*;
 
+proSimpleTypeSpecifier:
+	nestedNameSpecifier? theTypeName
+	| nestedNameSpecifier Template simpleTemplateId
+	| (
+		Char
+		| Char16
+		| Char32
+		| Wchar
+		| Bool
+		| Short
+		| Int
+		| Long
+		| Signed
+		| Unsigned
+		| Float
+		| Double
+		| Void
+		| Auto
+		| decltypeSpecifier
+	)+;
+
 nonSimpleTypeDeclSpecifier
 	: storageClassSpecifier
 	| (
@@ -576,7 +597,7 @@ preDeclSpecifierSeq
 postDeclSpecifierSeq
 	: nonSimpleTypeDeclSpecifier+;
 proDeclSpecifierSeq
-	: preDeclSpecifierSeq? simpleTypeSpecifier postDeclSpecifierSeq? attributeSpecifierSeq?;
+	: preDeclSpecifierSeq? proSimpleTypeSpecifier postDeclSpecifierSeq? attributeSpecifierSeq?;
 
 parameterDeclaration:
 	attributeSpecifierSeq? proDeclSpecifierSeq (
