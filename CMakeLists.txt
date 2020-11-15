@@ -15,9 +15,9 @@ Ubpa_DownloadZip(
 )
 
 Ubpa_DownloadZip(
-  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_cpp14_20201113.zip
-  antlr4_cpp14_20201113.zip
-  SHA256 0AF88CE2B015FEB20F0539B70539BDB129A21817CFCBA90F6243564429F4770D
+  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_cpp14_20201115.zip
+  antlr4_cpp14_20201115.zip
+  SHA256 125868CE7FCEED283F7C41687B408067AD19AA33FDFC9ECA432456867250AD26
 )
 
 Ubpa_AddSubDirsRec(include)

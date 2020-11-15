@@ -312,8 +312,9 @@ aliasDeclaration:
 	Using Identifier attributeSpecifierSeq? Assign theTypeId Semi;
 
 simpleDeclaration:
-	declSpecifierSeq? initDeclaratorList? Semi
-	| attributeSpecifierSeq declSpecifierSeq? initDeclaratorList Semi;
+	declSpecifierSeq? Semi
+	| proDeclSpecifierSeq? initDeclaratorList? Semi
+	| attributeSpecifierSeq proDeclSpecifierSeq? initDeclaratorList Semi;
 
 staticAssertDeclaration:
 	Static_assert LeftParen constantExpression Comma StringLiteral RightParen Semi;
@@ -605,7 +606,7 @@ parameterDeclaration:
 	);
 
 functionDefinition:
-	attributeSpecifierSeq? declSpecifierSeq? declarator virtualSpecifierSeq? functionBody;
+	attributeSpecifierSeq? proDeclSpecifierSeq? declarator virtualSpecifierSeq? functionBody;
 
 functionBody:
 	constructorInitializer? compoundStatement
@@ -826,7 +827,7 @@ theOperator:
 	| Not
 	| Assign
 	| Less
-	| GreaterEqual
+	| Greater
 	| PlusAssign
 	| MinusAssign
 	| StarAssign
