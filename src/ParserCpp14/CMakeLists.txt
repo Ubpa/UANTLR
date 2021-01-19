@@ -7,6 +7,7 @@ else()
 endif()
 
 Ubpa_AddTarget(
+  CXX_STANDARD 17
   MODE STATIC
   SOURCE
     "${PROJECT_SOURCE_DIR}/include/UANTLR/ParserCpp14"

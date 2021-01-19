@@ -4,6 +4,7 @@ build/
 vs_build/
 lib/
 .vs/
+.vscode/
 _deps/
 
 *Config.h
