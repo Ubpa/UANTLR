@@ -19,6 +19,10 @@ Ubpa_DownloadZip(
   antlr4_cpp14_20201115.zip
   SHA256 125868CE7FCEED283F7C41687B408067AD19AA33FDFC9ECA432456867250AD26
 )
+# name in antlr4_cpp14_20201115.zip is wrong, so change it here
+if(EXISTS "${CMAKE_SOURCE_DIR}/include/UANTLR/ParserCPP14")
+  file(RENAME "${CMAKE_SOURCE_DIR}/include/UANTLR/ParserCPP14" "${CMAKE_SOURCE_DIR}/include/UANTLR/ParserCpp14")
+endif()
 
 Ubpa_AddSubDirsRec(include)
 Ubpa_AddSubDirsRec(src)
