@@ -17,10 +17,6 @@
 #include <UANTLR/ParserCpp14/CPP14Parser.h>
 #include <UANTLR/ParserCpp14/CPP14ParserBaseVisitor.h>
 
-#include <Windows.h>
-
-#pragma execution_character_set("utf-8")
-
 using namespace Ubpa;
 using namespace antlr4;
 
