@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(UANTLR VERSION 0.2.0)
+project(UANTLR VERSION 0.2.1)
 message(STATUS "[Project] ${PROJECT_NAME}")
 
 include(cmake/InitUCMake.cmake)
-Ubpa_InitUCMake()
+Ubpa_InitUCMake(VERSION 0.6.4)
 
-Ubpa_InitProject()
+Ubpa_InitProject(CXX_STANDARD 17)
 
 Ubpa_DownloadZip(
   https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_runtime_20201113.zip

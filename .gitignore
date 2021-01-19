@@ -1,6 +1,7 @@
 resources/
 bin/
 build/
+vs_build/
 lib/
 .vs/
 _deps/
