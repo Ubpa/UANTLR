@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(UANTLR VERSION 0.2.1)
+project(UANTLR VERSION 0.3.0)
 message(STATUS "[Project] ${PROJECT_NAME}")
 
 include(cmake/InitUCMake.cmake)
@@ -9,15 +9,15 @@ Ubpa_InitUCMake(VERSION 0.6.4)
 Ubpa_InitProject()
 
 Ubpa_DownloadZip(
-  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_runtime_20201113.zip
-  antlr4_runtime_20201113.zip
-  SHA256 906DBEC5957DA4A39910E97A95B9019DEED03BF686B21A36F9781243311FC2D3
+  http://home.ustc.edu.cn/~ustczt/resources/UANTLR/antlr4_runtime_20210327.zip
+  antlr4_runtime_20210327.zip
+  SHA256 4832470B8105960771EF5CA4ADC20738CB80F05EA380E69566DB6F026455F9DC
 )
 
 Ubpa_DownloadZip(
-  https://cdn.jsdelivr.net/gh/Ubpa/UData@master/UANTLR/antlr4_cpp14_20201115.zip
-  antlr4_cpp14_20201115.zip
-  SHA256 125868CE7FCEED283F7C41687B408067AD19AA33FDFC9ECA432456867250AD26
+  http://home.ustc.edu.cn/~ustczt/resources/UANTLR/antlr4_cpp14_20210327.zip
+  antlr4_cpp14_20210327.zip
+  SHA256 F90B543EC368A2253126640EAA67F4693D06A9CA24939023BF6AC5D10BCEBBA8
 )
 # name in antlr4_cpp14_20201115.zip is wrong, so change it here
 if(EXISTS "${PROJECT_SOURCE_DIR}/include/UANTLR/ParserCPP14")
