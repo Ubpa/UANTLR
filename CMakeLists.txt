@@ -9,9 +9,9 @@ Ubpa_InitUCMake(VERSION 0.6.4)
 Ubpa_InitProject()
 
 Ubpa_DownloadZip(
-  http://home.ustc.edu.cn/~ustczt/resources/UANTLR/antlr4_runtime_20210327.zip
-  antlr4_runtime_20210327.zip
-  SHA256 4832470B8105960771EF5CA4ADC20738CB80F05EA380E69566DB6F026455F9DC
+  http://home.ustc.edu.cn/~ustczt/resources/UANTLR/antlr4_runtime_20210509.zip
+  antlr4_runtime_20210509.zip
+  SHA256 7F69653FA851323AE547882F7328730DB74959732FD01D928049AB8D7B6EF230
 )
 
 Ubpa_DownloadZip(
